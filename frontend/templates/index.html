@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Social Media Engagement Predictor</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body>
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge">
+            <i class="fa-solid fa-chart-line"></i>
+            AI Powered Analytics
+        </div>
+
+        <h1>
+            Social Media
+            <span>Engagement Predictor</span>
+        </h1>
+
+        <p>
+            Estimate the engagement rate of your social media posts using a
+            machine learning model trained on social engagement data.
+        </p>
+    </div>
+</section>
+
+<section class="main">
+    <div class="card">
+        <h2>
+            <i class="fa-solid fa-pen-to-square"></i>
+            Post Information
+        </h2>
+        
+        
+        <form action="/predict" method="POST">
+            <div class="grid">
+                <div class="form-group">
+                    <label>
+                        <i class="fa-solid fa-user"></i>
+                        Gender
+                    </label>
+                    <select name="user_gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label>
+                        <i class="fa-solid fa-cake-candles"></i>
+                        Age
+                    </label>
+                    <input
+                    type="number"
+                    name="user_age"
+                    placeholder="25"
+                    required>
+                </div>
+
+
+                <div class="form-group">
+                    <label>
+                        <i class="fa-solid fa-users"></i>
+                        Followers
+                    </label>
+                    <input
+                    type="number"
+                    name="followers_count"
+                    placeholder="50000"
+                    required>
+                </div>
+
+
+                <div class="form-group">
+                    <label>
+                        <i class="fa-solid fa-user-plus"></i>
+                        Following
+                    </label>
+                    <input
+                    type="number"
+                    name="following_count"
+                    placeholder="800"
+                    required>
+                </div>
+
+
+                <div class="form-group">
+                    <label>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Verified
+                    </label>
+                    <select
+                    name="is_verified">
+                    <option>No</option>
+                    <option>Yes</option>
+                </select>
+            </div>
+            
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Location
+                </label>
+                <select name="location" required>
+                    <option value="USA" selected>USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="UK">UK</option>
+                    <option value="Australia">Australia</option>
+                    <option value="India">India</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-hashtag"></i>
+                    Topic
+                </label>
+                <select name="topic" required>
+                    <option value="">Select Topic</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Business">Business</option>
+                    <option value="Education">Education</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Health">Health</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-language"></i>
+                    Language
+                </label>
+                <select name="language" required>
+                    <option value="">Select Language</option>
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-align-left"></i>
+                    Content Length
+                </label>
+                <input
+                    type="number"
+                    name="content_length"
+                    placeholder="220"
+                    required>
+            </div>
+            
+            
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-image"></i>
+                    Contains Media
+                </label>
+                <select name="has_media" required>
+                    <option value="">Select Option</option>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+    
+    <div class="form-group">
+        <label>
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            Device
+        </label>
+        <select name="device" required>
+            <option value="">Select Device</option>
+            <option value="Android">Android</option>
+            <option value="iPhone">iPhone</option>
+            <option value="Desktop">Desktop</option>
+            <option value="Tablet">Tablet</option>
+        </select>
+    </div>
+    
+    
+    <div class="form-group">
+        <label>
+            <i class="fa-solid fa-heart"></i>
+            Expected Likes
+        </label>
+        <input
+            type="number"
+            name="likes"
+            placeholder="1200"
+            required>
+        </div>
+        
+        
+        <div class="form-group">
+            <label>
+                <i class="fa-solid fa-comment"></i>
+                Expected Comments
+            </label>
+            <input
+                type="number"
+                name="comments"
+                placeholder="250"
+                required>
+            </div>
+
+
+            <div class="form-group">
+                <label>
+                    <i class="fa-solid fa-share-nodes"></i>
+                    Expected Shares
+                </label>
+                <input
+                    type="number"
+                    name="shares"
+                    placeholder="80"
+                    required>
+                </input>
+            </div>
+            
+            
+            <div class="form-group full-width">
+                <label>
+                    <i class="fa-solid fa-hashtag"></i>
+                    Hashtags
+                </label>
+                <input
+                    type="text"
+                    name="hashtags"
+                    placeholder="#AI #MachineLearning #Technology">
+                </input>
+            </div>
+        </div>
+        
+        
+        <div class="button-wrapper">
+            <button
+            type="submit"
+            class="predict-btn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            Predict Engagement
+        </button>
+    </div>
+</form>
+</div>
+
+
+
+{% if prediction %}
+<div class="result-card">
+    <div class="result-header">
+        <h2>
+            <i class="fa-solid fa-chart-pie"></i>
+            AI Prediction Result
+        </h2>
+
+    </div>
+
+    <!-- Prediction Circle -->
+    <div class="prediction-circle">
+        <span class="prediction-value">
+            {{ prediction }}%
+        </span>
+
+        <span class="prediction-text">
+            Engagement Rate
+        </span>
+    </div>
+
+    <h3 class="{{ color_class }}">
+        {{ level }}
+    </h3>
+
+    <!-- Progress Bar -->
+    <div class="progress-section">
+        <div class="progress-header">
+            <span>Engagement Score</span>
+
+            <span>{{ prediction }}%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"
+                 style="width: {{ progress }}%;">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <i class="fa-solid fa-brain"></i>
+
+            <h4>Model</h4>
+
+            <p>{{ model_name }}</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fa-solid fa-bullseye"></i>
+
+            <h4>Prediction</h4>
+
+            <p>{{ prediction }}%</p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fa-solid fa-chart-line"></i>
+
+            <h4>Status</h4>
+
+            <p>{{ level }}</p>
+        </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="tips">
+        <h4>
+            <i class="fa-solid fa-lightbulb"></i>
+            AI Recommendations
+        </h4>
+
+        {% for tip in tips %}
+        <div class="tip-card">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>{{ tip }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+
+{% if error %}
+<div class="error-card">
+    <h3>
+        <i class="fa-solid fa-circle-exclamation"></i>
+        Prediction Failed
+    </h3>
+    
+    <p>
+        {{ error }}
+    </p>
+</div>
+{% endif %}
+
+
+
+<footer>
+    <div class="footer-content">
+        <p>
+            Developed by
+            <strong>Muhammad Nasir</strong>
+        </p>
+    <p>
+        Machine Learning Project
+    </p>
+</div>
+
+</footer>
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
