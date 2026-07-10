@@ -148,6 +148,6 @@ python app.py
 
 ## Author
 
-**Nasir Sajjad**
+**Muhammad Nasir**
 
 Machine Learning Internship Project
